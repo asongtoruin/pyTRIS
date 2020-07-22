@@ -1,0 +1,2 @@
+class UnknownVersionWarning(UserWarning):
+    pass
