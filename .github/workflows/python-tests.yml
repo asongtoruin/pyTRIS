@@ -33,6 +33,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
+        python setup.py install
     - name: Test with pytest
       run: pytest --cov=./ --cov-report=xml --vcr-record=none
     - name: Upload coverage to Codecov
