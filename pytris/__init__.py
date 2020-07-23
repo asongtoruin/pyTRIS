@@ -4,11 +4,12 @@ from urllib.request import urlopen
 import warnings
 
 from .errors import UnknownVersionWarning
+from .areas import AreaMixin
 
 
 KNOWN_VERSIONS = ['1.0']
 
-class API:
+class API(AreaMixin, object):
     def __init__(self, version: str):
         if version not in KNOWN_VERSIONS:
             warnings.warn(

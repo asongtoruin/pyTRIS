@@ -1,0 +1,71 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - webtris.highwaysengland.co.uk
+      User-Agent:
+      - Python-urllib/3.7
+    method: GET
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/areas
+  response:
+    body:
+      string: '{"row_count":25,"areas":[{"Id":"1","Name":"A1 Darrington to Dishforth
+        DBFO","Description":"A1 Darrington to Dishforth DBFO","XLongitude":"-1.254871768539999","XLatitude":"53.682776925799999","YLongitude":"-1.446163528140000","YLatitude":"54.154346387899999"},{"Id":"2","Name":"A19
+        DBFO","Description":"A19 DBFO","XLongitude":"-1.112365622160000","XLatitude":"54.153504688799998","YLongitude":"-1.490683075040000","YLatitude":"54.974952856000002"},{"Id":"3","Name":"A1M
+        DBFO","Description":"A1M DBFO","XLongitude":"-0.233960881385999","XLatitude":"52.360424716300003","YLongitude":"-0.328372747518000","YLatitude":"52.534769924199999"},{"Id":"4","Name":"A249
+        DBFO","Description":"A249 DBFO","XLongitude":"0.772587339000999","XLatitude":"51.328025440700003","YLongitude":"0.660257268967000","YLatitude":"51.441940297999999"},{"Id":"5","Name":"A30/A35
+        DBFO","Description":"A30/A35 DBFO","XLongitude":"-2.211865933179999","XLatitude":"50.691301171299997","YLongitude":"-3.465456420609999","YLatitude":"50.813096373599997"},{"Id":"6","Name":"A417/A419
+        DBFO","Description":"A417/A419 DBFO","XLongitude":"-1.717215147269999","XLatitude":"51.527900762999998","YLongitude":"-2.166667003909999","YLatitude":"51.857020540500002"},{"Id":"7","Name":"A50
+        DBFO","Description":"A50 DBFO","XLongitude":"-1.325323733629999","XLatitude":"52.861020112500000","YLongitude":"-2.086677807750000","YLatitude":"52.970490573900001"},{"Id":"8","Name":"A69
+        DBFO","Description":"A69 DBFO","XLongitude":"-1.694109338200000","XLatitude":"54.895155570599997","YLongitude":"-2.885667609189999","YLatitude":"55.004585842200001"},{"Id":"9","Name":"Area
+        1","Description":"Area 1","XLongitude":"-3.514776297110000","XLatitude":"50.128955531099997","YLongitude":"-5.513263020480000","YLatitude":"50.747387848499997"},{"Id":"10","Name":"Area
+        10","Description":"Area 10","XLongitude":"-2.019387815320000","XLatitude":"53.064464058200002","YLongitude":"-3.098148096150000","YLatitude":"53.793015485799998"},{"Id":"11","Name":"Area
+        12","Description":"Area 12","XLongitude":"-0.078108957226400","XLatitude":"53.288884099699999","YLongitude":"-2.025616943649999","YLatitude":"54.242359506400000"},{"Id":"12","Name":"Area
+        13","Description":"Area 13","XLongitude":"-2.165421385140000","XLatitude":"53.735217847500003","YLongitude":"-3.549969601760000","YLatitude":"54.999408009200003"},{"Id":"13","Name":"Area
+        14","Description":"Area 14","XLongitude":"-1.255883872500000","XLatitude":"54.151466480600000","YLongitude":"-2.162089897170000","YLatitude":"55.804486297099999"},{"Id":"14","Name":"Area
+        2","Description":"Area 2","XLongitude":"-1.517605889390000","XLatitude":"50.679168602700003","YLongitude":"-3.519022576589999","YLatitude":"52.001972205100003"},{"Id":"15","Name":"Area
+        3","Description":"Area 3","XLongitude":"-0.452182421939000","XLatitude":"50.757250559900001","YLongitude":"-2.211750785180000","YLatitude":"51.862143142999997"},{"Id":"16","Name":"Area
+        4","Description":"Area 4","XLongitude":"1.351327924420000","XLatitude":"50.810259056000000","YLongitude":"-0.972772760412999","YLatitude":"51.407346238099997"},{"Id":"17","Name":"Area
+        6","Description":"Area 6","XLongitude":"1.775753320950000","XLatitude":"51.621299842299997","YLongitude":"-0.525648304148999","YLatitude":"52.706685091499999"},{"Id":"18","Name":"Area
+        7","Description":"Area 7","XLongitude":"-0.462432251480000","XLatitude":"51.948522660700000","YLongitude":"-1.576912870939999","YLatitude":"53.384444379000001"},{"Id":"19","Name":"Area
+        8","Description":"Area 8","XLongitude":"0.405584509495000","XLatitude":"51.728699652800003","YLongitude":"-0.877378607112999","YLatitude":"52.377519294800003"},{"Id":"20","Name":"Area
+        9","Description":"Area 9","XLongitude":"-1.228576039390000","XLatitude":"51.827713352099998","YLongitude":"-3.066336017349999","YLatitude":"53.069254674299998"},{"Id":"21","Name":"M1/A1
+        DBFO","Description":"M1/A1 DBFO","XLongitude":"-1.328303183030000","XLatitude":"53.731363365199996","YLongitude":"-1.575085516589999","YLatitude":"53.864691758500001"},{"Id":"22","Name":"M25
+        DBFO","Description":"M25 DBFO","XLongitude":"0.399483874459000","XLatitude":"51.247645713099999","YLongitude":"-0.582268485123000","YLatitude":"51.814602688500003"},{"Id":"23","Name":"M40
+        DBFO","Description":"M40 DBFO","XLongitude":"-0.466937827626999","XLatitude":"51.568571811699996","YLongitude":"-1.614970111900000","YLatitude":"52.249280154099999"},{"Id":"24","Name":"M6
+        Toll Road DBFO","Description":"M6 Toll Road DBFO","XLongitude":"-1.668694215099999","XLatitude":"52.473740461600002","YLongitude":"-2.082359604480000","YLatitude":"52.673980035400000"},{"Id":"25","Name":"Second
+        Severn Crossing","Description":"Second Severn Crossing","XLongitude":"-2.618632967660000","XLatitude":"51.568398876499998","YLongitude":"-2.784861680870000","YLatitude":"51.621037905199998"}]}'
+    headers:
+      Access-Control-Expose-Headers:
+      - Request-Context
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '4814'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 23 Jul 2020 19:47:57 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Request-Context:
+      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
+      Server:
+      - Microsoft-IIS/10.0
+      Set-Cookie:
+      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
