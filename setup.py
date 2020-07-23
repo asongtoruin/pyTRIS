@@ -34,7 +34,6 @@ setup(
     packages=find_packages(),
     python_requires='>=3.6, <4',
     # install_requires=[], 
-    tests_require=['pytest', 'vcrpy'],
     # extras_require={
     #     'docs': ['mkdocs', 'mkdocs-material']
     # }
