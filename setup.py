@@ -25,7 +25,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -33,7 +32,7 @@ setup(
     ],
     keywords='transport',
     packages=find_packages(),
-    python_requires='>=3.5, <4',
+    python_requires='>=3.6, <4',
     # install_requires=[], 
     tests_require=['pytest', 'vcrpy'],
     # extras_require={
