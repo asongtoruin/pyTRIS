@@ -18,3 +18,15 @@ class Area(Model):
         self.xlatitude = xlatitude
         self.ylongitude = ylongitude
         self.ylatitude = ylatitude
+
+
+@API.register('sites', endpoint_type=ObjectEndpoint)
+class Site(Model):
+    def __init__(self, id: str, name: str, description: str, 
+                 longitude: str, latitude: str, status: str):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.longitude = longitude
+        self.latitude = latitude
+        self.status = status

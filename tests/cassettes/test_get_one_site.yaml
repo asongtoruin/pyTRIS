@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - webtris.highwaysengland.co.uk
+      User-Agent:
+      - Python-urllib/3.7
+    method: GET
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/sites/1
+  response:
+    body:
+      string: '{"row_count":1,"sites":[{"Id":"1","Name":"MIDAS site at M4/2295A2 priority
+        1 on link 105009001; GPS Ref: 502816;178156; Westbound","Description":"M4/2295A2","Longitude":-0.520379557723297,"Latitude":51.4930115367112,"Status":"Inactive"}]}'
+    headers:
+      Access-Control-Expose-Headers:
+      - Request-Context
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '238'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Jul 2020 13:23:42 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Request-Context:
+      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
+      Server:
+      - Microsoft-IIS/10.0
+      Set-Cookie:
+      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
