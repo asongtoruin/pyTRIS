@@ -1,5 +1,5 @@
 from .api import API
-from .endpoints import ObjectEndpoint, SubObjectEndpoint
+from .endpoints import ObjectEndpoint, SubObjectEndpoint, DataEndpoint
 
 
 class Model:
@@ -38,3 +38,12 @@ class SiteType(Model):
     def __init__(self, id: str, description: str):
         self.id = id
         self.description = description
+
+
+@API.register('reports', 
+              endpoint_type=DataEndpoint, 
+              required=['sites', 'start_date', 'end_date'],
+              valid_intervals=['daily', 'monthly'],
+              paginate=True)
+class Report(list):
+    pass

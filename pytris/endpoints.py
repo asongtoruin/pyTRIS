@@ -52,4 +52,53 @@ class SubObjectEndpoint(ObjectEndpoint):
 
 
 class DataEndpoint(BaseEndpoint):
-    pass
+    PAGE_SIZE = 50
+
+    def __init__(self, version, path, model, request_class, valid_intervals,
+                 required, paginate):
+        super().__init__(version, path, model, request_class)
+        self._valid_intervals = valid_intervals
+        self._paginate = paginate
+        self._required = required
+
+    def get(self, report_type, page_size=None, **kwargs):
+        if not page_size:
+            page_size = self.PAGE_SIZE
+        if not all(c in kwargs.keys() for c in self._required):
+            raise ValueError
+        
+        if self._paginate:
+            kwargs['page'] = 1
+            kwargs['page_size'] = page_size
+
+        endpoint_path = '/'.join([self.path, report_type])
+
+        request = self.request_class(self.version, endpoint_path)
+        resp = request.fetch(params=kwargs)
+
+        # TODO genericise
+        results = resp['Rows']
+
+        if self._paginate:
+            next_page = self._next_page_link(resp)
+            while next_page is not None:
+                kwargs['page'] += 1
+                resp = request.fetch(params=kwargs)
+
+                # TODO genericise
+                results += resp['Rows']
+                next_page = self._next_page_link(resp)
+        
+        return self.model(results)
+                
+    
+    @staticmethod
+    def _next_page_link(resp):
+        header = resp.get('Header', dict())
+        links = header.get('links', [])
+
+        for link in links:
+            if link['rel'].lower() == 'nextpage':
+                return link['href']
+        
+        return None
