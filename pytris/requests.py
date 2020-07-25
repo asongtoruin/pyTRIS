@@ -1,5 +1,5 @@
 import json
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlencode
 from urllib.request import urlopen
 
 
@@ -14,9 +14,14 @@ class HTTPRequest:
     def url(self):
         return urljoin(self.BASE_URL.format(version=self.version), self.path)
 
-    def fetch(self):
-        print(f"Requesting {self.url}")
-        resp = urlopen(self.url)
+    def fetch(self, params=None):
+        if params is not None:
+            data = urlencode(params)
+            url = self.url + f'?{data}'
+        else:
+            url = self.url
+        print(f"Requesting {url}")
+        resp = urlopen(url)
 
         encoding = resp.info().get_content_charset('utf-8')
 
