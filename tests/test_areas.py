@@ -1,6 +1,6 @@
 import pytest
 
-from pytris import API, KNOWN_VERSIONS
+from pytris.api import API, KNOWN_VERSIONS
 from pytris.areas import Area
 
 
