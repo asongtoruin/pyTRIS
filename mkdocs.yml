@@ -9,9 +9,10 @@ theme:
 markdown_extensions:
   - toc:
       permalink: true
-  - pymdownx.highlight:
-      use_pygments: true
-      linenums: true
+  # - pymdownx.highlight:
+  #     use_pygments: true
+  #     linenums: true
+  - markdown.extensions.codehilite
 
 plugins:
   - search
