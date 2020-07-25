@@ -7,6 +7,11 @@ def test_site_types_available(latest_api):
     assert callable(getattr(latest_api, 'site_types', None))
 
 
+def test_site_type_missing_methods(latest_api):
+    with pytest.raises(NotImplementedError):
+        latest_api.site_types().get()
+
+
 @pytest.mark.vcr()
 def test_get_all_site_types(latest_api):
     assert callable(getattr(latest_api.site_types(), 'all', None))
