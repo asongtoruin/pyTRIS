@@ -14,5 +14,5 @@ pip install pyTRIS
 ```
 
 ## Getting Started
-Visit the [Getting Started](/getting-started/) page for information on basic 
+Visit the [Getting Started](./getting-started.md) page for information on basic 
 patterns.
