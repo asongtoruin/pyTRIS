@@ -4,13 +4,13 @@ from urllib.request import urlopen
 import warnings
 
 from .errors import UnknownVersionWarning
-from .areas import AreaMixin
+from .requests import HTTPRequest
 
 
 KNOWN_VERSIONS = ['1.0']
 
-class API(AreaMixin, object):
-    def __init__(self, version: str):
+class API:
+    def __init__(self, version: str, request_class=HTTPRequest):
         if version not in KNOWN_VERSIONS:
             warnings.warn(
                 f'API version "{version}" has not been tested with these '
@@ -18,13 +18,19 @@ class API(AreaMixin, object):
                 f'{",".join(KNOWN_VERSIONS)})',
                 UnknownVersionWarning, stacklevel=2
             )
-        self._base_url = f'http://webtris.highwaysengland.co.uk/api/v{version}/'
+        self.version = version
+        self._request_class = request_class
 
-    def _get(self, endpoint, **kwargs):
-        url = urljoin(self._base_url, endpoint)
-
-        resp = urlopen(url)
-
-        encoding = resp.info().get_content_charset('utf-8')
-
-        return json.loads(resp.read().decode(encoding))
+    @classmethod
+    def register(cls, name, endpoint_type, **kwargs):
+        def decorator(model):
+            def accessor(self):
+                return endpoint_type(
+                    version=self.version, path=name, model=model, 
+                    request_class=self._request_class, **kwargs
+                )
+            accessor.__name__ = name
+            accessor.__doc__ = 'Endpoint for {}s'.format(model.__name__)
+            setattr(cls, name, accessor)
+            return model
+        return decorator

@@ -7,8 +7,8 @@ from pytris.errors import UnknownVersionWarning
 def test_api_known():
     api = API('1.0')
 
-    assert hasattr(api, '_base_url')
-    assert isinstance(api._base_url, str)
+    assert hasattr(api, 'version')
+    assert isinstance(api.version, str)
 
 
 def test_api_unknown(recwarn):
