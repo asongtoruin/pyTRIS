@@ -226,6 +226,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#accessing-endpoints" class="md-nav__link">
+    Accessing Endpoints
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -275,6 +282,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#accessing-endpoints" class="md-nav__link">
+    Accessing Endpoints
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -301,10 +315,22 @@
 <p>The first step to accessing the data is to create an instance of the <code>API</code> 
 object. The only parameter required is <code>version</code> - at the time of writing 
 (July 2020), the only <code>version</code> of the webTRIS APIs that is available is 1.0.</p>
-<pre><code class="python">from pytris.api import API
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
 
-api = API(version='1.0')
-</code></pre>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2 id="accessing-endpoints">Accessing Endpoints<a class="headerlink" href="#accessing-endpoints" title="Permanent link">&para;</a></h2>
+<p>Endpoints are accessed through methods from the API object. These are named 
+in line with their descriptions from webTRIS, albeit with some modifications to 
+match Python conventions. To access endpoints for Sites, for example, we can 
+use:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
+</code></pre></div>
                 
               
               
