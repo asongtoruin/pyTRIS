@@ -21,7 +21,10 @@ class ObjectEndpoint(BaseEndpoint):
         # TODO check key type
         item_path = '/'.join([self.path, str(key)])
         request = self.request_class(self.version, item_path)
-        return self._objects_from_resp(request.fetch())
+
+        # Single item endpoints seem to still return an iterable for objects.
+        # Only return the first one.
+        return next(self._objects_from_resp(request.fetch()))
     
     def _objects_from_resp(self, resp):
         return (
