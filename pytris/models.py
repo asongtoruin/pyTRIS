@@ -1,5 +1,5 @@
 from .api import API
-from .endpoints import ObjectEndpoint
+from .endpoints import ObjectEndpoint, SubObjectEndpoint
 
 
 class Model:
@@ -30,3 +30,11 @@ class Site(Model):
         self.longitude = longitude
         self.latitude = latitude
         self.status = status
+
+
+@API.register('site_types', endpoint_type=SubObjectEndpoint, submodel=Site,
+              sub_path='sites')
+class SiteType(Model):
+    def __init__(self, id: str, description: str):
+        self.id = id
+        self.description = description

@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - webtris.highwaysengland.co.uk
+      User-Agent:
+      - Python-urllib/3.7
+    method: GET
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/sitetypes
+  response:
+    body:
+      string: '{"row_count":5,"sitetypes":[{"Id":"1","Description":"MIDAS"},{"Id":"2","Description":"TAME"},{"Id":"3","Description":"TMU"},{"Id":"4","Description":"Legacy"},{"Id":"5","Description":"NONE"}]}'
+    headers:
+      Access-Control-Expose-Headers:
+      - Request-Context
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '191'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 25 Jul 2020 13:42:42 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Request-Context:
+      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
+      Server:
+      - Microsoft-IIS/10.0
+      Set-Cookie:
+      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
