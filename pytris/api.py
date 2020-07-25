@@ -26,8 +26,8 @@ class API:
         def decorator(model):
             def accessor(self):
                 return endpoint_type(
-                    version=self.version, path=name, model=model, 
-                    request_class=self._request_class, **kwargs
+                    version=self.version, path=name.replace('_', ''), 
+                    model=model, request_class=self._request_class, **kwargs
                 )
             accessor.__name__ = name
             accessor.__doc__ = 'Endpoint for {}s'.format(model.__name__)
