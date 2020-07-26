@@ -13,6 +13,9 @@ markdown_extensions:
   #     use_pygments: true
   #     linenums: true
   - markdown.extensions.codehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - search
@@ -24,3 +27,5 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Endpoints: endpoints.md
+  - Troubleshooting: troubleshooting.md
+  - Contributing: contributing.md
