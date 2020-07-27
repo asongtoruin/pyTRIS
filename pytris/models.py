@@ -6,7 +6,7 @@ class Model:
     pass
 
 
-@API.register('areas', endpoint_type=ObjectEndpoint)
+@API.register('areas', resource_name='areas', endpoint_type=ObjectEndpoint)
 class Area(Model):
     def __init__(self, id: str, name: str, description: str, 
                  xlongitude: str, xlatitude: str, 
@@ -20,7 +20,7 @@ class Area(Model):
         self.ylatitude = ylatitude
 
 
-@API.register('sites', endpoint_type=ObjectEndpoint)
+@API.register('sites', resource_name='sites', endpoint_type=ObjectEndpoint)
 class Site(Model):
     def __init__(self, id: str, name: str, description: str, 
                  longitude: str, latitude: str, status: str):
@@ -32,15 +32,15 @@ class Site(Model):
         self.status = status
 
 
-@API.register('site_types', endpoint_type=SubObjectEndpoint, submodel=Site,
-              sub_path='sites')
+@API.register('site_types', resource_name='sitetypes', 
+              endpoint_type=SubObjectEndpoint, submodel=Site, sub_path='sites')
 class SiteType(Model):
     def __init__(self, id: str, description: str):
         self.id = id
         self.description = description
 
 
-@API.register('reports', 
+@API.register('reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
               required=['sites', 'start_date', 'end_date'],
               valid_intervals=['daily', 'monthly'],

@@ -22,11 +22,11 @@ class API:
         self._request_class = request_class
 
     @classmethod
-    def register(cls, name, endpoint_type, **kwargs):
+    def register(cls, name, resource_name, endpoint_type, **kwargs):
         def decorator(model):
             def accessor(self):
                 return endpoint_type(
-                    version=self.version, path=name.replace('_', ''), 
+                    version=self.version, path=resource_name, 
                     model=model, request_class=self._request_class, **kwargs
                 )
             accessor.__name__ = name
