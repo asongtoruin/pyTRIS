@@ -68,3 +68,21 @@ class MonthlyReport(Report):
               paginate=True)
 class AnnualReport(Report):
     pass
+
+
+@API.register('daily_quality', resource_name='quality',
+              endpoint_type=DataEndpoint, 
+              required=['siteId', 'start_date', 'end_date'],
+              interval='daily', entry_point='Qualities',
+              paginate=False)
+class DailyQuality(Report):
+    pass
+
+
+@API.register('overall_quality', resource_name='quality',
+              endpoint_type=DataEndpoint, 
+              required=['sites', 'start_date', 'end_date'],
+              interval='overall', entry_point='data_quality',
+              paginate=False)
+class Quality(int):
+    pass
