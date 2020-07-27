@@ -2,6 +2,8 @@ import json
 from urllib.parse import urljoin, urlencode
 from urllib.request import urlopen
 
+from .errors import DataUnavailableError
+
 
 class HTTPRequest:
     BASE_URL = 'http://webtris.highwaysengland.co.uk/api/v{version}/'
@@ -25,4 +27,8 @@ class HTTPRequest:
 
         encoding = resp.info().get_content_charset('utf-8')
 
-        return json.loads(resp.read().decode(encoding))
+        data = resp.read()
+        if data:
+            return json.loads(data.decode(encoding))
+        else:
+            raise DataUnavailableError('No data found.')
