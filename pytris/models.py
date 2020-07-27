@@ -40,10 +40,31 @@ class SiteType(Model):
         self.description = description
 
 
-@API.register('reports', resource_name='reports',
+class Report(list):
+    pass
+
+@API.register('daily_reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
               required=['sites', 'start_date', 'end_date'],
-              valid_intervals=['daily', 'monthly'],
+              interval='daily', entry_point='Rows',
               paginate=True)
-class Report(list):
+class DailyReport(Report):
+    pass
+
+
+@API.register('monthly_reports', resource_name='reports',
+              endpoint_type=DataEndpoint, 
+              required=['sites', 'start_date', 'end_date'],
+              interval='monthly', entry_point='MonthCollection',
+              paginate=True)
+class MonthlyReport(Report):
+    pass
+
+
+@API.register('annual_reports', resource_name='reports',
+              endpoint_type=DataEndpoint, 
+              required=['sites', 'start_date', 'end_date'],
+              interval='annual', entry_point='AnnualReportBody',
+              paginate=True)
+class AnnualReport(Report):
     pass

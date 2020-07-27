@@ -54,14 +54,15 @@ class SubObjectEndpoint(ObjectEndpoint):
 class DataEndpoint(BaseEndpoint):
     PAGE_SIZE = 50
 
-    def __init__(self, version, path, model, request_class, valid_intervals,
-                 required, paginate):
+    def __init__(self, version, path, model, request_class, interval, 
+                 entry_point, required, paginate):
         super().__init__(version, path, model, request_class)
-        self._valid_intervals = valid_intervals
+        self._interval = interval
+        self._entry_point = entry_point
         self._paginate = paginate
         self._required = required
 
-    def get(self, report_type, page_size=None, **kwargs):
+    def get(self, page_size=None, **kwargs):
         if not page_size:
             page_size = self.PAGE_SIZE
         if not all(c in kwargs.keys() for c in self._required):
@@ -71,22 +72,21 @@ class DataEndpoint(BaseEndpoint):
             kwargs['page'] = 1
             kwargs['page_size'] = page_size
 
-        endpoint_path = '/'.join([self.path, report_type])
+        endpoint_path = '/'.join([self.path, self._interval])
 
         request = self.request_class(self.version, endpoint_path)
         resp = request.fetch(params=kwargs)
 
-        # TODO genericise
-        results = resp['Rows']
+        results = resp[self._entry_point]
 
+        # TODO make this neater? It's kinda ugly.
         if self._paginate:
             next_page = self._next_page_link(resp)
             while next_page is not None:
                 kwargs['page'] += 1
                 resp = request.fetch(params=kwargs)
 
-                # TODO genericise
-                results += resp['Rows']
+                results += resp[self._entry_point]
                 next_page = self._next_page_link(resp)
         
         return self.model(results)
