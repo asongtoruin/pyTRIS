@@ -4,7 +4,7 @@ object. The only parameter required is `version` - at the time of writing
 (July 2020), the only `version` of the webTRIS APIs that is available is 1.0.
 
 ```Python
-from pytris.api import API
+from pytris import API
 
 api = API(version='1.0')
 ```
@@ -16,7 +16,7 @@ webTRIS, albeit with some modifications to match Python conventions. To access
 endpoints for Sites, for example, we can use:
 
 ```Python
-from pytris.api import API
+from pytris import API
 
 api = API(version='1.0')
 sites = api.sites()
@@ -40,7 +40,7 @@ this, we can use the `.get()` method for sites and pass through the ID of the
 site we want to find information about:
 
 ```Python
-from pytris.api import API
+from pytris import API
 
 api = API(version='1.0')
 sites = api.sites()
@@ -68,7 +68,7 @@ The `.all()` method returns a generator of `Site` objects, so in most cases
 you'll need to iterate through them:
 
 ```Python
-from pytris.api import API
+from pytris import API
 
 api = API(version='1.0')
 sites = api.sites()
