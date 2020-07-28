@@ -2,6 +2,10 @@ site_name: pyTRIS
 
 theme:
   name: material
+  palette:
+    scheme: preference
+    primary: pink
+    accent: blue
   icon:
     logo: fontawesome/solid/tachometer-alt
     repo: fontawesome/brands/github-alt
