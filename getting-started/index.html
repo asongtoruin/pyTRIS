@@ -21,6 +21,12 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/main.b5d04df8.min.css">
       
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#e91e63">
       
     
     
@@ -40,8 +46,13 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="pink" data-md-color-accent="blue">
   
+    
+      <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -266,6 +277,40 @@
     Reports
   </a>
   
+    <nav class="md-nav" aria-label="Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#report-types" class="md-nav__link">
+    Report Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-parameters" class="md-nav__link">
+    Required Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-format" class="md-nav__link">
+    Report Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -386,6 +431,40 @@
     Reports
   </a>
   
+    <nav class="md-nav" aria-label="Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#report-types" class="md-nav__link">
+    Report Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-parameters" class="md-nav__link">
+    Required Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-format" class="md-nav__link">
+    Report Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -419,30 +498,28 @@
 <p>The first step to accessing the data is to create an instance of the <code>API</code> 
 object. The only parameter required is <code>version</code> - at the time of writing 
 (July 2020), the only <code>version</code> of the webTRIS APIs that is available is 1.0.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h2 id="accessing-endpoints">Accessing Endpoints<a class="headerlink" href="#accessing-endpoints" title="Permanent link">&para;</a></h2>
 <p>Endpoints are accessed through methods from the API object relating to their
 corresponding resource. These are named in line with their descriptions from 
 webTRIS, albeit with some modifications to match Python conventions. To access 
 endpoints for Sites, for example, we can use:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 </code></pre></div>
 
-
 <p>The methods that are available vary by the type of resource being accessed. Some
-resources are used to access objects (<em>Sites</em>, <em>Areas</em> and <em>SiteTypes</em>) while 
-others are used to access data (<em>Reports</em> and <em>Quality</em>). Next we'll go on to 
-briefly describe how to use the <em>Sites</em> and <em>Reports</em> endpoints, as these are
-likely to be the most used. Information on the other endpoints can be found in 
-the <a href="../endpoints/">Endpoints</a> section.</p>
+resources are provided as objects (<em>Sites</em>, <em>Areas</em> and <em>SiteTypes</em>) while 
+others are provide data (<em>Reports</em> and <em>Quality</em>). Next we'll go on to briefly 
+describe how to use the <em>Sites</em> and <em>Reports</em> endpoints, as these are likely to 
+be the most used. Information on the other endpoints can be found in the 
+<a href="../endpoints/">Endpoints</a> section.</p>
 <h3 id="sites">Sites<a class="headerlink" href="#sites" title="Permanent link">&para;</a></h3>
 <p>The Sites endpoints let the user look up information for one or all of the count
 locations stored in webTRIS.</p>
@@ -451,14 +528,13 @@ locations stored in webTRIS.</p>
 when checking data that's been provided to you from some other source. To do 
 this, we can use the <code>.get()</code> method for sites and pass through the ID of the
 site we want to find information about:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>This will return a <code>Site</code> object - this is a data storage class containing the 
 attributes relating to this site. The attributes are again named in line with 
@@ -477,18 +553,90 @@ using this method. This may be useful, however, for mapping all sites and
 understanding which sites may be relevant for further analysis.</p>
 <p>The <code>.all()</code> method returns a generator of <code>Site</code> objects, so in most cases 
 you'll need to iterate through them:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris.api</span> <span class="kn">import</span> <span class="n">API</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">sites</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
     <span class="c1"># Do something with each site</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
 </code></pre></div>
 
-
 <h3 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h3>
-<p><em>Coming soon</em></p>
+<p><code>pyTRIS</code> handles Reports in a slightly differently manner to Sites. </p>
+<h4 id="report-types">Report Types<a class="headerlink" href="#report-types" title="Permanent link">&para;</a></h4>
+<p>webTRIS provides three different kinds of report. In <code>pyTRIS</code>, we handle these
+through different methods on the <code>API</code> object:</p>
+<ul>
+<li><code>.daily_reports()</code>, which provides data down to 15 minute intervals</li>
+<li><code>.monthly_reports()</code>, which provides summaries by day</li>
+<li><code>.annual_reports()</code>, which provides averages for each year</li>
+</ul>
+<h4 id="required-parameters">Required Parameters<a class="headerlink" href="#required-parameters" title="Permanent link">&para;</a></h4>
+<p>Each of these methods has the same required parameters:</p>
+<ul>
+<li><code>sites</code> should either be:<ul>
+<li>the <code>id</code> of a single site to be looked up, which can be passed as either a 
+  string or integer</li>
+<li>multiple site IDs joined with commas and provided as a single string - 
+  e.g. <code>'8438,8439'</code></li>
+</ul>
+</li>
+<li><code>start_date</code> should be a date in string format of <code>DDMMYYYY</code> - e.g. 
+  <code>'01012020'</code> for the 1st January 2020</li>
+<li><code>start_date</code> should be a date, again as a string in the same format</li>
+</ul>
+<details class="warning"><summary>Warning</summary><p>At present, if any of the required parameters are missing, <code>pyTRIS</code> will 
+simply raise a blank <code>ValueError</code>.</p>
+</details>
+<h4 id="report-format">Report Format<a class="headerlink" href="#report-format" title="Permanent link">&para;</a></h4>
+<p>The reports themselves are provided as lists - the format varies slightly 
+between the different report types, but the columns provided are fairly 
+straightforward.</p>
+<details class="info"><summary>Info</summary><p>The intention is for a future version of <code>pyTRIS</code> to include native methods 
+to export the reports as a <code>DataFrame</code> via <code>pandas</code>.</p>
+</details>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>Putting this together, an example to get data for one site would be as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">sites</span><span class="o">=</span><span class="mi">8438</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;01122019&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;01022020&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Changing to return <code>monthly_reports</code> or <code>annual_reports</code> just requires changing
+the method used.</p>
+<details class="example"><summary>Example for <code>monthly_reports</code></summary><p>To get monthly reports, the <code>daily_reports</code> example would change to be as 
+follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">monthly</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">monthly_reports</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">monthly</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">sites</span><span class="o">=</span><span class="mi">8438</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;01122019&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;01022020&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
+<details class="example"><summary>Example for Multiple Sites</summary><p>To get multiple sites, the <code>daily_reports</code> example would change to be as 
+follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">sites</span><span class="o">=</span><span class="s1">&#39;8438,8439&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;01122019&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;01022020&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
                 
               
               
