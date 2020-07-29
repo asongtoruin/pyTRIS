@@ -41,7 +41,11 @@ class SiteType(Model):
 
 
 class Report(list):
-    pass
+    def to_frame(self):
+        import pandas as pd
+
+        return pd.DataFrame(self)
+
 
 @API.register('daily_reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
@@ -58,7 +62,32 @@ class DailyReport(Report):
               interval='monthly', entry_point='MonthCollection',
               paginate=True)
 class MonthlyReport(Report):
-    pass
+    def to_frame(self):
+        from copy import deepcopy
+
+        import pandas as pd
+        if pd.__version__.startswith('0'):
+            from pandas.io.json import json_normalize
+        else:
+            from pandas import json_normalize
+
+        dupe = deepcopy(self)
+        frames = dict()
+
+        for col in ('Days', 'Daily Aggregations', 'Hourly Aggregations'):
+            frames[col] = json_normalize(dupe, col, meta=['Month', 'SiteId'])
+            for m in dupe:
+                m.pop(col)
+
+        last = json_normalize(dupe)
+        last.columns = [
+            c.replace('Summary Aggregations.', '') for c in last.columns
+        ]
+        frames['Summary Aggregations'] = last
+
+        del dupe
+
+        return frames
 
 
 @API.register('annual_reports', resource_name='reports',
@@ -67,7 +96,20 @@ class MonthlyReport(Report):
               interval='annual', entry_point='AnnualReportBody',
               paginate=True)
 class AnnualReport(Report):
-    pass
+    def to_frame(self):
+        import pandas as pd
+        
+        if pd.__version__.startswith('0'):
+            from pandas.io.json import json_normalize
+        else:
+            from pandas import json_normalize
+
+        res = json_normalize(
+            self, 'AnnualReportMonthlyDataRows', meta=['Year', 'SiteId']
+        )
+
+        res.columns = [c.replace('AnnualReportRow.', '') for c in res.columns]
+        return res
 
 
 @API.register('daily_quality', resource_name='quality',
