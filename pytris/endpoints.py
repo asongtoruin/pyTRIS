@@ -65,8 +65,12 @@ class DataEndpoint(BaseEndpoint):
     def get(self, page_size=None, **kwargs):
         if not page_size:
             page_size = self.PAGE_SIZE
-        if not all(c in kwargs.keys() for c in self._required):
-            raise ValueError
+
+        missing_params = [k for k in self._required if k not in kwargs.keys()]
+        if missing_params:
+            raise ValueError(
+                f'Missing required parameters: {", ".join(missing_params)}'
+            )
         
         if self._paginate:
             kwargs['page'] = 1
