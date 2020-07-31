@@ -1,3 +1,7 @@
+---
+description: Documentation for pyTRIS - a simple API wrapper for Highways England's WebTRIS Traffic Flow API. 
+---
+
 ## Introduction
 Welcome to the `pyTRIS` documentation. 
 
