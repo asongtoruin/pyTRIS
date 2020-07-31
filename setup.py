@@ -33,12 +33,8 @@ setup(
     keywords='transport',
     packages=find_packages(),
     python_requires='>=3.6, <4',
-    # install_requires=[], 
-    # extras_require={
-    #     'docs': ['mkdocs', 'mkdocs-material']
-    # }
-    project_urls={  # Optional
-        # 'Documentation': 'https://asongtoruin.github.io/pyTRIS/',
+    project_urls={
+        'Documentation': 'https://asongtoruin.github.io/pyTRIS/',
         'Source': 'https://github.com/asongtoruin/pyTRIS/',
     },
 )
