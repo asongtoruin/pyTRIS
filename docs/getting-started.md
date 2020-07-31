@@ -102,17 +102,13 @@ Each of these methods has the same required parameters:
 * `start_date` should be a date, again as a string in the same format
 
 ??? warning
-    At present, if any of the required parameters are missing, `pyTRIS` will 
-    simply raise a blank `ValueError`.
+    If any of the required parameters are missing, `pyTRIS` will raise a 
+    `ValueError` detailing the missing parameters.
 
 #### Report Format
 The reports themselves are provided as lists - the format varies slightly 
 between the different report types, but the columns provided are fairly 
 straightforward.
-
-??? info
-    The intention is for a future version of `pyTRIS` to include native methods 
-    to export the reports as a `DataFrame` via `pandas`.
 
 #### Example
 Putting this together, an example to get data for one site would be as follows:
@@ -160,3 +156,43 @@ the method used.
         sites='8438,8439', start_date='01122019', end_date='01022020'
     )
     ```
+
+#### Exporting to `pandas`
+
+!!! warning
+    Installing `pyTRIS` does not install of `pandas` as a dependency, and as 
+    such the user must ensure that `pandas` is installed in their environment 
+    for the following examples to work.
+
+Many data analysis processes in Python involve the use of `pandas` and its 
+`DataFrame` objects. With this in mind, `pyTRIS` offers a direct way of 
+exporting a `Report` to a `DataFrame` through the `to_frame()` method.
+
+For `daily_reports` and `annual_reports`, this method directly returns a 
+`DataFrame`, like so:
+
+```Python
+from pytris import API
+
+api = API(version='1.0')
+daily = api.daily_reports()
+
+result = daily.get(
+    sites=8438, start_date='01122019', end_date='01022020'
+)
+
+df = result.to_frame()
+```
+
+For `monthly_reports`, however, the process is slightly different. This endpoint
+provides multiple aggregations of data. As such, the `to_frame()` method for 
+this endpoint provides a `dict` of dataframes. The keys to this `dict` describe
+the data contained within the values, which are:
+
+- *Days*, which provides total flows for each individual day
+- *Daily Aggregations*, which provides averages for each weekday within each 
+  month
+- *Hourly Aggregations*, which provides averages by hour for each weekday within 
+  each month
+- *Summary Aggregations*, which provides high-level summary figures for each 
+  month (e.g. ADT)
