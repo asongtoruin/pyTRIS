@@ -308,6 +308,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exporting-to-pandas" class="md-nav__link">
+    Exporting to pandas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -462,6 +469,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exporting-to-pandas" class="md-nav__link">
+    Exporting to pandas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -587,16 +601,13 @@ through different methods on the <code>API</code> object:</p>
   <code>'01012020'</code> for the 1st January 2020</li>
 <li><code>start_date</code> should be a date, again as a string in the same format</li>
 </ul>
-<details class="warning"><summary>Warning</summary><p>At present, if any of the required parameters are missing, <code>pyTRIS</code> will 
-simply raise a blank <code>ValueError</code>.</p>
+<details class="warning"><summary>Warning</summary><p>If any of the required parameters are missing, <code>pyTRIS</code> will raise a 
+<code>ValueError</code> detailing the missing parameters.</p>
 </details>
 <h4 id="report-format">Report Format<a class="headerlink" href="#report-format" title="Permanent link">&para;</a></h4>
 <p>The reports themselves are provided as lists - the format varies slightly 
 between the different report types, but the columns provided are fairly 
 straightforward.</p>
-<details class="info"><summary>Info</summary><p>The intention is for a future version of <code>pyTRIS</code> to include native methods 
-to export the reports as a <code>DataFrame</code> via <code>pandas</code>.</p>
-</details>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
 <p>Putting this together, an example to get data for one site would be as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
@@ -637,6 +648,43 @@ follows:</p>
 </code></pre></div>
 
 </details>
+<h4 id="exporting-to-pandas">Exporting to <code>pandas</code><a class="headerlink" href="#exporting-to-pandas" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Installing <code>pyTRIS</code> does not install of <code>pandas</code> as a dependency, and as 
+such the user must ensure that <code>pandas</code> is installed in their environment 
+for the following examples to work.</p>
+</div>
+<p>Many data analysis processes in Python involve the use of <code>pandas</code> and its 
+<code>DataFrame</code> objects. With this in mind, <code>pyTRIS</code> offers a direct way of 
+exporting a <code>Report</code> to a <code>DataFrame</code> through the <code>to_frame()</code> method.</p>
+<p>For <code>daily_reports</code> and <code>annual_reports</code>, this method directly returns a 
+<code>DataFrame</code>, like so:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">sites</span><span class="o">=</span><span class="mi">8438</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;01122019&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;01022020&#39;</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</code></pre></div>
+
+<p>For <code>monthly_reports</code>, however, the process is slightly different. This endpoint
+provides multiple aggregations of data. As such, the <code>to_frame()</code> method for 
+this endpoint provides a <code>dict</code> of dataframes. The keys to this <code>dict</code> describe
+the data contained within the values, which are:</p>
+<ul>
+<li><em>Days</em>, which provides total flows for each individual day</li>
+<li><em>Daily Aggregations</em>, which provides averages for each weekday within each 
+  month</li>
+<li><em>Hourly Aggregations</em>, which provides averages by hour for each weekday within 
+  each month</li>
+<li><em>Summary Aggregations</em>, which provides high-level summary figures for each 
+  month (e.g. ADT)</li>
+</ul>
                 
               
               
