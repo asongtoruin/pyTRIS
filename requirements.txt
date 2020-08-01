@@ -2,3 +2,4 @@ pytest
 pytest-cov
 vcrpy
 pytest-vcr
+pandas

@@ -1,10 +1,14 @@
+from pandas import DataFrame
 import pytest
+import vcr
 
 from pytris.models import Report, DailyReport, MonthlyReport, AnnualReport
 
 
 REPORT_CLASSES = ['daily_reports', 'monthly_reports', 'annual_reports']
 MODEL_CLASSES = [DailyReport, MonthlyReport, AnnualReport]
+
+PARAMS_DICT = dict(sites=8438, start_date='30122019', end_date='02012020')
 
 
 def test_reports_available(latest_api):
@@ -26,26 +30,52 @@ def test_get_reports(latest_api):
         method = getattr(latest_api, rep)
         assert callable(getattr(method(), 'get', None))
 
-        res = method().get(
-            sites=8438, start_date='30122019', end_date='02012020'
-        )
+        res = method().get(**PARAMS_DICT)
 
         assert isinstance(res, Report)
         assert isinstance(res, model)
+
+
+@vcr.use_cassette('tests/cassettes/test_get_reports.yaml')
+def test_daily_to_frame(latest_api):
+    res = latest_api.daily_reports().get(**PARAMS_DICT)
+
+    frame = res.to_frame()
+
+    assert isinstance(frame, DataFrame)
+
+
+@vcr.use_cassette('tests/cassettes/test_get_reports.yaml')
+def test_annual_to_frame(latest_api):
+    res = latest_api.annual_reports().get(**PARAMS_DICT)
+
+    frame = res.to_frame()
+
+    assert isinstance(frame, DataFrame)
+
+
+@vcr.use_cassette('tests/cassettes/test_get_reports.yaml')
+def test_monthly_to_frame(latest_api):
+    res = latest_api.monthly_reports().get(**PARAMS_DICT)
+
+    frames = res.to_frame()
+
+    expected_names = set((
+        'Days', 'Daily Aggregations', 
+        'Hourly Aggregations', 'Summary Aggregations'
+    ))
+
+    assert set(frames.keys()) == expected_names
+    assert all(isinstance(v, DataFrame) for v in frames.values())
 
 
 def test_missing_param(latest_api):
     for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
         method = getattr(latest_api, rep)
 
-        params_dict = {
-            'sites': 8438,
-            'start_date': '30122019',
-            'end_date': '02012019'
-        }
-
-        for key in params_dict.keys():
-            partial_dict = {k: v for k, v in params_dict.items() if k != key}
+        # Try each missing parameter in turn
+        for key in PARAMS_DICT.keys():
+            partial_dict = {k: v for k, v in PARAMS_DICT.items() if k != key}
             
             with pytest.raises(ValueError) as err:
                 method().get(**partial_dict)
