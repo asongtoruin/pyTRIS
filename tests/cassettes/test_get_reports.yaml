@@ -9,10 +9,10 @@ interactions:
       User-Agent:
       - Python-urllib/3.7
     method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=50
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=200
   response:
     body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=2&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
+      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=2&page_size=200","rel":"nextPage"}]},"Rows":[{"Site
         Name":"7639/2","Report Date":"2019-12-30T00:00:00","Time Period Ending":"00:14:00","Time
         Interval":"0","0 - 520 cm":"60","521 - 660 cm":"0","661 - 1160 cm":"2","1160+
         cm":"13","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
@@ -287,57 +287,13 @@ interactions:
         cm":"20","661 - 1160 cm":"10","1160+ cm":"29","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"49","Total Volume":"553"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '22978'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:54 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=2&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=3&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2019-12-30T00:00:00","Time Period Ending":"12:44:00","Time
-        Interval":"50","0 - 520 cm":"562","521 - 660 cm":"16","661 - 1160 cm":"12","1160+
-        cm":"21","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"48","Total Volume":"611"},{"Site Name":"7639/2","Report Date":"2019-12-30T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"49","Total Volume":"553"},{"Site Name":"7639/2","Report
+        Date":"2019-12-30T00:00:00","Time Period Ending":"12:44:00","Time Interval":"50","0
+        - 520 cm":"562","521 - 660 cm":"16","661 - 1160 cm":"12","1160+ cm":"21","0
+        - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"48","Total
+        Volume":"611"},{"Site Name":"7639/2","Report Date":"2019-12-30T00:00:00","Time
         Period Ending":"12:59:00","Time Interval":"51","0 - 520 cm":"506","521 - 660
         cm":"29","661 - 1160 cm":"9","1160+ cm":"27","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -606,57 +562,13 @@ interactions:
         cm":"5","661 - 1160 cm":"1","1160+ cm":"18","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"54","Total Volume":"67"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '23165'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:54 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=3&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=2&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=4&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time Period Ending":"01:14:00","Time
-        Interval":"4","0 - 520 cm":"30","521 - 660 cm":"3","661 - 1160 cm":"3","1160+
-        cm":"12","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"55","Total Volume":"48"},{"Site Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"54","Total Volume":"67"},{"Site Name":"7639/2","Report
+        Date":"2019-12-31T00:00:00","Time Period Ending":"01:14:00","Time Interval":"4","0
+        - 520 cm":"30","521 - 660 cm":"3","661 - 1160 cm":"3","1160+ cm":"12","0 -
+        10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"55","Total
+        Volume":"48"},{"Site Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time
         Period Ending":"01:29:00","Time Interval":"5","0 - 520 cm":"19","521 - 660
         cm":"3","661 - 1160 cm":"2","1160+ cm":"8","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -925,57 +837,13 @@ interactions:
         cm":"18","661 - 1160 cm":"6","1160+ cm":"20","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"50","Total Volume":"529"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '23150'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:54 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=4&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=3&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=5&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time Period Ending":"13:44:00","Time
-        Interval":"54","0 - 520 cm":"517","521 - 660 cm":"17","661 - 1160 cm":"5","1160+
-        cm":"15","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"50","Total Volume":"554"},{"Site Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"50","Total Volume":"529"},{"Site Name":"7639/2","Report
+        Date":"2019-12-31T00:00:00","Time Period Ending":"13:44:00","Time Interval":"54","0
+        - 520 cm":"517","521 - 660 cm":"17","661 - 1160 cm":"5","1160+ cm":"15","0
+        - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"50","Total
+        Volume":"554"},{"Site Name":"7639/2","Report Date":"2019-12-31T00:00:00","Time
         Period Ending":"13:59:00","Time Interval":"55","0 - 520 cm":"501","521 - 660
         cm":"15","661 - 1160 cm":"7","1160+ cm":"11","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -1253,11 +1121,11 @@ interactions:
       Connection:
       - close
       Content-Length:
-      - '23096'
+      - '91169'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
+      - Sat, 01 Aug 2020 17:52:32 GMT
       Expires:
       - '-1'
       Pragma:
@@ -1285,10 +1153,10 @@ interactions:
       User-Agent:
       - Python-urllib/3.7
     method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=5&page_size=50
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=2&page_size=200
   response:
     body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=4&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=6&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
+      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=200","rel":"prevPage"}]},"Rows":[{"Site
         Name":"7639/2","Report Date":"2020-01-01T00:00:00","Time Period Ending":"02:14:00","Time
         Interval":"8","0 - 520 cm":"57","521 - 660 cm":"3","661 - 1160 cm":"1","1160+
         cm":"0","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
@@ -1563,57 +1431,13 @@ interactions:
         cm":"7","661 - 1160 cm":"3","1160+ cm":"5","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"51","Total Volume":"402"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '23050'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=6&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=5&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=7&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2020-01-01T00:00:00","Time Period Ending":"14:44:00","Time
-        Interval":"58","0 - 520 cm":"378","521 - 660 cm":"4","661 - 1160 cm":"3","1160+
-        cm":"5","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"51","Total Volume":"390"},{"Site Name":"7639/2","Report Date":"2020-01-01T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"51","Total Volume":"402"},{"Site Name":"7639/2","Report
+        Date":"2020-01-01T00:00:00","Time Period Ending":"14:44:00","Time Interval":"58","0
+        - 520 cm":"378","521 - 660 cm":"4","661 - 1160 cm":"3","1160+ cm":"5","0 -
+        10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"51","Total
+        Volume":"390"},{"Site Name":"7639/2","Report Date":"2020-01-01T00:00:00","Time
         Period Ending":"14:59:00","Time Interval":"59","0 - 520 cm":"369","521 - 660
         cm":"6","661 - 1160 cm":"3","1160+ cm":"2","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -1882,57 +1706,13 @@ interactions:
         cm":"3","661 - 1160 cm":"2","1160+ cm":"7","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"54","Total Volume":"27"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '23071'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=7&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=6&page_size=50","rel":"prevPage"},{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=8&page_size=50","rel":"nextPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time Period Ending":"03:14:00","Time
-        Interval":"12","0 - 520 cm":"24","521 - 660 cm":"7","661 - 1160 cm":"1","1160+
-        cm":"10","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"56","Total Volume":"42"},{"Site Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"54","Total Volume":"27"},{"Site Name":"7639/2","Report
+        Date":"2020-01-02T00:00:00","Time Period Ending":"03:14:00","Time Interval":"12","0
+        - 520 cm":"24","521 - 660 cm":"7","661 - 1160 cm":"1","1160+ cm":"10","0 -
+        10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"56","Total
+        Volume":"42"},{"Site Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time
         Period Ending":"03:29:00","Time Interval":"13","0 - 520 cm":"14","521 - 660
         cm":"2","661 - 1160 cm":"3","1160+ cm":"11","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -2201,57 +1981,13 @@ interactions:
         cm":"29","661 - 1160 cm":"15","1160+ cm":"29","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
         - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71
-        - 80 mph":"","80+ mph":"","Avg mph":"50","Total Volume":"545"}]}'
-    headers:
-      Access-Control-Expose-Headers:
-      - Request-Context
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-      Content-Length:
-      - '23216'
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
-      Expires:
-      - '-1'
-      Pragma:
-      - no-cache
-      Request-Context:
-      - appId=cid-v1:3b0838a8-1994-4289-b119-6188391feca0
-      Server:
-      - Microsoft-IIS/10.0
-      Set-Cookie:
-      - ARRAffinity=6898e739202e5db599a72dbdd700eaa46dfb1de739a663d1f507ca6338242a0c;Path=/;HttpOnly;Domain=webtris.highwaysengland.co.uk
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Connection:
-      - close
-      Host:
-      - webtris.highwaysengland.co.uk
-      User-Agent:
-      - Python-urllib/3.7
-    method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites=8438&start_date=30122019&end_date=02012020&page=8&page_size=50
-  response:
-    body:
-      string: '{"Header":{"row_count":384,"start_date":"30122019","end_date":"02012020","links":[{"href":"http://webtris.highwaysengland.co.uk/api/v1.0/reports/Daily?sites=8438&start_date=30122019&end_date=02012020&page=7&page_size=50","rel":"prevPage"}]},"Rows":[{"Site
-        Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time Period Ending":"15:44:00","Time
-        Interval":"62","0 - 520 cm":"533","521 - 660 cm":"34","661 - 1160 cm":"14","1160+
-        cm":"45","0 - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26
-        - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51
-        - 55 mph":"","56 - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg
-        mph":"49","Total Volume":"626"},{"Site Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time
+        - 80 mph":"","80+ mph":"","Avg mph":"50","Total Volume":"545"},{"Site Name":"7639/2","Report
+        Date":"2020-01-02T00:00:00","Time Period Ending":"15:44:00","Time Interval":"62","0
+        - 520 cm":"533","521 - 660 cm":"34","661 - 1160 cm":"14","1160+ cm":"45","0
+        - 10 mph":"","11 - 15 mph":"","16 - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31
+        - 35 mph":"","36 - 40 mph":"","41 - 45 mph":"","46 - 50 mph":"","51 - 55 mph":"","56
+        - 60 mph":"","61 - 70 mph":"","71 - 80 mph":"","80+ mph":"","Avg mph":"49","Total
+        Volume":"626"},{"Site Name":"7639/2","Report Date":"2020-01-02T00:00:00","Time
         Period Ending":"15:59:00","Time Interval":"63","0 - 520 cm":"577","521 - 660
         cm":"32","661 - 1160 cm":"13","1160+ cm":"42","0 - 10 mph":"","11 - 15 mph":"","16
         - 20 mph":"","21 - 25 mph":"","26 - 30 mph":"","31 - 35 mph":"","36 - 40 mph":"","41
@@ -2441,11 +2177,11 @@ interactions:
       Connection:
       - close
       Content-Length:
-      - '15743'
+      - '83860'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
+      - Sat, 01 Aug 2020 17:52:33 GMT
       Expires:
       - '-1'
       Pragma:
@@ -2473,7 +2209,7 @@ interactions:
       User-Agent:
       - Python-urllib/3.7
     method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/monthly?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=50
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/monthly?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=200
   response:
     body:
       string: '{"Header":{"row_count":2,"start_date":"30122019","end_date":"02012020","links":[]},"MonthCollection":[{"Month":"December
@@ -2497,7 +2233,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
+      - Sat, 01 Aug 2020 17:52:32 GMT
       Expires:
       - '-1'
       Pragma:
@@ -2525,7 +2261,7 @@ interactions:
       User-Agent:
       - Python-urllib/3.7
     method: GET
-    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/annual?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=50
+    uri: http://webtris.highwaysengland.co.uk/api/v1.0/reports/annual?sites=8438&start_date=30122019&end_date=02012020&page=1&page_size=200
   response:
     body:
       string: '{"Header":{"row_count":2,"start_date":"01/12/2019","end_date":"31/01/2020","links":[]},"AnnualReportBody":[{"Year":"2019","SiteId":"8438","AnnualReportMonthlyDataRows":[{"MonthName":"Jan","AnnualReportRow":{"ADT24Hour":"30755","ADT24LargeVehiclePercentage":"13.1","AWT24Hour":"33124","AWT24LargeVehiclePercentage":"15.0","ADT18Hour":"29162","ADT18LargeVehiclePercentage":"12.0","AWT18Hour":"31352","AWT18LargeVehiclePercentage":"13.9","ADT16Hour":"28232","ADT16LargeVehiclePercentage":"11.8","AWT16Hour":"30369","AWT16LargeVehiclePercentage":"13.6","ADT12Hour":"23875","ADT12LargeVehiclePercentage":"11.4","AWT12Hour":"25552","AWT12LargeVehiclePercentage":"13.3"}},{"MonthName":"Feb","AnnualReportRow":{"ADT24Hour":"33330","ADT24LargeVehiclePercentage":"13.2","AWT24Hour":"36096","AWT24LargeVehiclePercentage":"15.3","ADT18Hour":"31568","ADT18LargeVehiclePercentage":"11.9","AWT18Hour":"34152","AWT18LargeVehiclePercentage":"14.0","ADT16Hour":"30536","ADT16LargeVehiclePercentage":"11.7","AWT16Hour":"33061","AWT16LargeVehiclePercentage":"13.8","ADT12Hour":"25713","ADT12LargeVehiclePercentage":"11.4","AWT12Hour":"27708","AWT12LargeVehiclePercentage":"13.5"}},{"MonthName":"Mar","AnnualReportRow":{"ADT24Hour":"33546","ADT24LargeVehiclePercentage":"12.4","AWT24Hour":"36148","AWT24LargeVehiclePercentage":"15.1","ADT18Hour":"31867","ADT18LargeVehiclePercentage":"11.4","AWT18Hour":"34275","AWT18LargeVehiclePercentage":"14.0","ADT16Hour":"30931","ADT16LargeVehiclePercentage":"11.2","AWT16Hour":"33333","AWT16LargeVehiclePercentage":"13.8","ADT12Hour":"26103","ADT12LargeVehiclePercentage":"10.9","AWT12Hour":"27934","AWT12LargeVehiclePercentage":"13.6"}},{"MonthName":"Apr","AnnualReportRow":{"ADT24Hour":"34529","ADT24LargeVehiclePercentage":"12.5","AWT24Hour":"36839","AWT24LargeVehiclePercentage":"14.6","ADT18Hour":"32757","ADT18LargeVehiclePercentage":"11.4","AWT18Hour":"34881","AWT18LargeVehiclePercentage":"13.4","ADT16Hour":"31635","ADT16LargeVehiclePercentage":"11.2","AWT16Hour":"33711","AWT16LargeVehiclePercentage":"13.2","ADT12Hour":"26680","ADT12LargeVehiclePercentage":"11.0","AWT12Hour":"28298","AWT12LargeVehiclePercentage":"13.0"}},{"MonthName":"May","AnnualReportRow":{"ADT24Hour":"34418","ADT24LargeVehiclePercentage":"12.6","AWT24Hour":"36738","AWT24LargeVehiclePercentage":"14.7","ADT18Hour":"32633","ADT18LargeVehiclePercentage":"11.5","AWT18Hour":"34776","AWT18LargeVehiclePercentage":"13.5","ADT16Hour":"31575","ADT16LargeVehiclePercentage":"11.3","AWT16Hour":"33694","AWT16LargeVehiclePercentage":"13.3","ADT12Hour":"26655","ADT12LargeVehiclePercentage":"11.1","AWT12Hour":"28276","AWT12LargeVehiclePercentage":"13.0"}},{"MonthName":"Jun","AnnualReportRow":{"ADT24Hour":"35650","ADT24LargeVehiclePercentage":"12.3","AWT24Hour":"38341","AWT24LargeVehiclePercentage":"14.9","ADT18Hour":"33726","ADT18LargeVehiclePercentage":"11.2","AWT18Hour":"36186","AWT18LargeVehiclePercentage":"13.8","ADT16Hour":"32626","ADT16LargeVehiclePercentage":"11.1","AWT16Hour":"35091","AWT16LargeVehiclePercentage":"13.5","ADT12Hour":"27472","ADT12LargeVehiclePercentage":"10.8","AWT12Hour":"29357","AWT12LargeVehiclePercentage":"13.3"}},{"MonthName":"Jul","AnnualReportRow":{"ADT24Hour":"36514","ADT24LargeVehiclePercentage":"13.2","AWT24Hour":"38656","AWT24LargeVehiclePercentage":"15.2","ADT18Hour":"34504","ADT18LargeVehiclePercentage":"12.0","AWT18Hour":"36459","AWT18LargeVehiclePercentage":"13.9","ADT16Hour":"33355","ADT16LargeVehiclePercentage":"11.7","AWT16Hour":"35304","AWT16LargeVehiclePercentage":"13.6","ADT12Hour":"27981","ADT12LargeVehiclePercentage":"11.4","AWT12Hour":"29499","AWT12LargeVehiclePercentage":"13.3"}},{"MonthName":"Aug","AnnualReportRow":{"ADT24Hour":"35698","ADT24LargeVehiclePercentage":"12.2","AWT24Hour":"37983","AWT24LargeVehiclePercentage":"14.2","ADT18Hour":"33785","ADT18LargeVehiclePercentage":"11.0","AWT18Hour":"35901","AWT18LargeVehiclePercentage":"13.0","ADT16Hour":"32617","ADT16LargeVehiclePercentage":"10.8","AWT16Hour":"34729","AWT16LargeVehiclePercentage":"12.8","ADT12Hour":"27311","ADT12LargeVehiclePercentage":"10.5","AWT12Hour":"28981","AWT12LargeVehiclePercentage":"12.4"}},{"MonthName":"Sep","AnnualReportRow":{"ADT24Hour":"36048","ADT24LargeVehiclePercentage":"11.8","AWT24Hour":"38066","AWT24LargeVehiclePercentage":"14.0","ADT18Hour":"34125","ADT18LargeVehiclePercentage":"10.7","AWT18Hour":"35928","AWT18LargeVehiclePercentage":"12.8","ADT16Hour":"32999","ADT16LargeVehiclePercentage":"10.5","AWT16Hour":"34792","AWT16LargeVehiclePercentage":"12.6","ADT12Hour":"27813","ADT12LargeVehiclePercentage":"10.1","AWT12Hour":"29139","AWT12LargeVehiclePercentage":"12.3"}},{"MonthName":"Oct","AnnualReportRow":{"ADT24Hour":"35776","ADT24LargeVehiclePercentage":"12.1","AWT24Hour":"37712","AWT24LargeVehiclePercentage":"14.1","ADT18Hour":"33878","ADT18LargeVehiclePercentage":"11.0","AWT18Hour":"35620","AWT18LargeVehiclePercentage":"12.9","ADT16Hour":"32750","ADT16LargeVehiclePercentage":"10.8","AWT16Hour":"34466","AWT16LargeVehiclePercentage":"12.6","ADT12Hour":"27488","ADT12LargeVehiclePercentage":"10.5","AWT12Hour":"28761","AWT12LargeVehiclePercentage":"12.4"}},{"MonthName":"Nov","AnnualReportRow":{"ADT24Hour":"34641","ADT24LargeVehiclePercentage":"12.9","AWT24Hour":"37071","AWT24LargeVehiclePercentage":"15.3","ADT18Hour":"32556","ADT18LargeVehiclePercentage":"11.3","AWT18Hour":"34716","AWT18LargeVehiclePercentage":"13.7","ADT16Hour":"31351","ADT16LargeVehiclePercentage":"11.0","AWT16Hour":"33453","AWT16LargeVehiclePercentage":"13.3","ADT12Hour":"26271","ADT12LargeVehiclePercentage":"10.6","AWT12Hour":"27779","AWT12LargeVehiclePercentage":"13.0"}},{"MonthName":"Dec","AnnualReportRow":{"ADT24Hour":"29412","ADT24LargeVehiclePercentage":"10.5","AWT24Hour":"30250","AWT24LargeVehiclePercentage":"12.6","ADT18Hour":"27845","ADT18LargeVehiclePercentage":"9.3","AWT18Hour":"28582","AWT18LargeVehiclePercentage":"11.3","ADT16Hour":"26781","ADT16LargeVehiclePercentage":"9.1","AWT16Hour":"27482","AWT16LargeVehiclePercentage":"11.0","ADT12Hour":"22629","ADT12LargeVehiclePercentage":"8.7","AWT12Hour":"23065","AWT12LargeVehiclePercentage":"10.6"}}],"AnnualReportAverages":{"ADT24Hour":"34193","ADT24LargeVehiclePercentage":"12.4","AWT24Hour":"36418","AWT24LargeVehiclePercentage":"14.6","ADT18Hour":"32367","ADT18LargeVehiclePercentage":"11.2","AWT18Hour":"34402","AWT18LargeVehiclePercentage":"13.3","ADT16Hour":"31282","ADT16LargeVehiclePercentage":"11.0","AWT16Hour":"33290","AWT16LargeVehiclePercentage":"13.1","ADT12Hour":"26332","ADT12LargeVehiclePercentage":"10.7","AWT12Hour":"27862","AWT12LargeVehiclePercentage":"12.8"},"AnnualReportTotals":{"SiteHours":"4157","NumberOfHours":"181","AADTOneWay12Hour":"26332","AADTOneWay16Hour":"31282","AADTOneWay18Hour":"32367","AADTOneWay24Hour":"34193","AAWTOneWay12Hour":"27862","AAWTOneWay16Hour":"33290","AAWTOneWay18Hour":"34402","AAWTOneWay24Hour":"36418","PeakDailyFlow":"39755","PeakDailyFlowDate":"08/11/2019
@@ -2543,7 +2279,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 28 Jul 2020 19:09:55 GMT
+      - Sat, 01 Aug 2020 17:52:33 GMT
       Expires:
       - '-1'
       Pragma:

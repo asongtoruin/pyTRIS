@@ -64,7 +64,7 @@ class SubObjectEndpoint(ObjectEndpoint):
 
 
 class DataEndpoint(BaseEndpoint):
-    PAGE_SIZE = 50
+    PAGE_SIZE = 200
 
     def __init__(self, version: str, path: str, 
                  model: Type[Report], request_class: Type[HTTPRequest], 
