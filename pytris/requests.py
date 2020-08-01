@@ -1,4 +1,5 @@
 import json
+from typing import Optional
 from urllib.parse import urljoin, urlencode
 from urllib.request import urlopen
 
@@ -8,7 +9,7 @@ from .errors import DataUnavailableError
 class HTTPRequest:
     BASE_URL = 'http://webtris.highwaysengland.co.uk/api/v{version}/'
 
-    def __init__(self, version, path):
+    def __init__(self, version: str, path: str):
         self.version = version
         self.path = path
 
@@ -16,7 +17,7 @@ class HTTPRequest:
     def url(self):
         return urljoin(self.BASE_URL.format(version=self.version), self.path)
 
-    def fetch(self, params=None):
+    def fetch(self, params: Optional[dict]=None):
         if params is not None:
             data = urlencode(params)
             url = self.url + f'?{data}'
@@ -29,6 +30,6 @@ class HTTPRequest:
 
         data = resp.read()
         if data:
-            return json.loads(data.decode(encoding))
+            return json.loads(data)#.decode(encoding))
         else:
             raise DataUnavailableError('No data found.')

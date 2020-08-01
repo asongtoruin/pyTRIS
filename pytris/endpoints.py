@@ -1,5 +1,13 @@
+from typing import Iterator, Optional, Type, Union
+
+from .base_models import Model, Report
+from .requests import HTTPRequest
+
+
 class BaseEndpoint:
-    def __init__(self, version, path, model, request_class):
+    def __init__(self, version: str, path: str, 
+                 model: Union[Type[Model], Type[Report]], 
+                 request_class: Type[HTTPRequest]):
         self.version = version
         self.path = path
         self.model = model
@@ -17,7 +25,7 @@ class ObjectEndpoint(BaseEndpoint):
         request = self.request_class(self.version, self.path)
         return self._objects_from_resp(request.fetch(), self.model, self.path)
 
-    def get(self, key):
+    def get(self, key: Union[int, str]):
         # TODO check key type
         item_path = '/'.join([self.path, str(key)])
         request = self.request_class(self.version, item_path)
@@ -28,14 +36,18 @@ class ObjectEndpoint(BaseEndpoint):
             self._objects_from_resp(request.fetch(), self.model, self.path)
         )
     
-    def _objects_from_resp(self, resp, model, key_name):
+    def _objects_from_resp(self, resp: dict, 
+                           model: Union[Type[Model], Type[Report]], 
+                           key_name: str):
         return (
             model(**{k.lower(): v for k, v in mod_dict.items()})
             for mod_dict in resp[key_name]
         )
 
 class SubObjectEndpoint(ObjectEndpoint):
-    def __init__(self, version, path, model, submodel, sub_path, request_class):
+    def __init__(self, version: str, path: str, 
+                 model: Type[Model], submodel: Type[Model], 
+                 sub_path: str, request_class: Type[HTTPRequest]):
         super().__init__(version, path, model, request_class)
         self.submodel = submodel
         self.sub_path = sub_path
@@ -43,7 +55,7 @@ class SubObjectEndpoint(ObjectEndpoint):
     def get(self, *args, **kwargs):
         BaseEndpoint.get(self, *args, **kwargs)
     
-    def get_children(self, key):
+    def get_children(self, key: Union[int, str]):
         item_path = '/'.join([self.path, str(key), self.sub_path])
         request = self.request_class(self.version, item_path)
         return self._objects_from_resp(
@@ -54,15 +66,17 @@ class SubObjectEndpoint(ObjectEndpoint):
 class DataEndpoint(BaseEndpoint):
     PAGE_SIZE = 50
 
-    def __init__(self, version, path, model, request_class, interval, 
-                 entry_point, required, paginate):
+    def __init__(self, version: str, path: str, 
+                 model: Type[Report], request_class: Type[HTTPRequest], 
+                 interval: str, entry_point: str, 
+                 required: Iterator[str], paginate: bool):
         super().__init__(version, path, model, request_class)
         self._interval = interval
         self._entry_point = entry_point
         self._paginate = paginate
         self._required = required
 
-    def get(self, page_size=None, **kwargs):
+    def get(self, page_size: Optional[int]=None, **kwargs):
         if not page_size:
             page_size = self.PAGE_SIZE
 
@@ -97,7 +111,7 @@ class DataEndpoint(BaseEndpoint):
                 
     
     @staticmethod
-    def _next_page_link(resp):
+    def _next_page_link(resp: dict):
         header = resp.get('Header', dict())
         links = header.get('links', [])
 

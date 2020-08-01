@@ -1,9 +1,6 @@
 from .api import API
+from .base_models import Model, Report
 from .endpoints import ObjectEndpoint, SubObjectEndpoint, DataEndpoint
-
-
-class Model:
-    pass
 
 
 @API.register('areas', resource_name='areas', endpoint_type=ObjectEndpoint)
@@ -38,13 +35,6 @@ class SiteType(Model):
     def __init__(self, id: str, description: str):
         self.id = id
         self.description = description
-
-
-class Report(list):
-    def to_frame(self):
-        import pandas as pd
-
-        return pd.DataFrame(self)
 
 
 @API.register('daily_reports', resource_name='reports',

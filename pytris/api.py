@@ -1,8 +1,10 @@
 import json
 from urllib.parse import urljoin 
 from urllib.request import urlopen
+from typing import Type
 import warnings
 
+from .endpoints import BaseEndpoint
 from .errors import UnknownVersionWarning
 from .requests import HTTPRequest
 
@@ -10,7 +12,8 @@ from .requests import HTTPRequest
 KNOWN_VERSIONS = ['1.0']
 
 class API:
-    def __init__(self, version: str='1.0', request_class=HTTPRequest):
+    def __init__(self, version: str='1.0', 
+                 request_class: Type[HTTPRequest]=HTTPRequest):
         if version not in KNOWN_VERSIONS:
             warnings.warn(
                 f'API version "{version}" has not been tested with these '
@@ -22,7 +25,8 @@ class API:
         self._request_class = request_class
 
     @classmethod
-    def register(cls, name, resource_name, endpoint_type, **kwargs):
+    def register(cls, name: str, resource_name: str, 
+                 endpoint_type: Type[BaseEndpoint], **kwargs):
         def decorator(model):
             def accessor(self):
                 return endpoint_type(
