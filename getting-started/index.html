@@ -511,10 +511,11 @@
                 <h2 id="creating-an-api-object">Creating an API object<a class="headerlink" href="#creating-an-api-object" title="Permanent link">&para;</a></h2>
 <p>The first step to accessing the data is to create an instance of the <code>API</code> 
 object. The only parameter required is <code>version</code> - at the time of writing 
-(July 2020), the only <code>version</code> of the webTRIS APIs that is available is 1.0.</p>
+(July 2020), the only <code>version</code> of the webTRIS APIs that is available is 1.0, 
+and so this is passed through by default</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 </code></pre></div>
 
 <h2 id="accessing-endpoints">Accessing Endpoints<a class="headerlink" href="#accessing-endpoints" title="Permanent link">&para;</a></h2>
@@ -524,7 +525,7 @@ webTRIS, albeit with some modifications to match Python conventions. To access
 endpoints for Sites, for example, we can use:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 </code></pre></div>
 
@@ -544,7 +545,7 @@ this, we can use the <code>.get()</code> method for sites and pass through the I
 site we want to find information about:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -569,7 +570,7 @@ understanding which sites may be relevant for further analysis.</p>
 you'll need to iterate through them:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">sites</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sites</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">sites</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -612,7 +613,7 @@ straightforward.</p>
 <p>Putting this together, an example to get data for one site would be as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -626,7 +627,7 @@ the method used.</p>
 follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">monthly</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">monthly_reports</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">monthly</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -639,7 +640,7 @@ follows:</p>
 follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -662,7 +663,7 @@ exporting a <code>Report</code> to a <code>DataFrame</code> through the <code>to
 <code>DataFrame</code>, like so:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pytris</span> <span class="kn">import</span> <span class="n">API</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">API</span><span class="p">()</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">daily_reports</span><span class="p">()</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
