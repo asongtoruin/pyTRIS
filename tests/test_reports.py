@@ -2,6 +2,7 @@ from pandas import DataFrame
 import pytest
 import vcr
 
+from pytris.errors import DataUnavailableError
 from pytris.models import Report, DailyReport, MonthlyReport, AnnualReport
 
 
@@ -81,3 +82,15 @@ def test_missing_param(latest_api):
                 method().get(**partial_dict)
 
             assert key in str(err.value)
+
+
+@pytest.mark.vcr()
+def test_no_data(latest_api):
+    for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
+        method = getattr(latest_api, rep)
+
+        with pytest.raises(DataUnavailableError):
+            method().get(
+                sites=PARAMS_DICT['sites'], 
+                start_date='01012011', end_date='02012011'
+            )
