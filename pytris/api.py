@@ -10,7 +10,7 @@ from .requests import HTTPRequest
 KNOWN_VERSIONS = ['1.0']
 
 class API:
-    def __init__(self, version: str, request_class=HTTPRequest):
+    def __init__(self, version: str='1.0', request_class=HTTPRequest):
         if version not in KNOWN_VERSIONS:
             warnings.warn(
                 f'API version "{version}" has not been tested with these '
