@@ -1,6 +1,7 @@
 from .api import API
 from .base_models import Model, Report
 from .endpoints import ObjectEndpoint, SubObjectEndpoint, DataEndpoint
+from .utilities import requires_pandas
 
 
 @API.register('areas', resource_name='areas', endpoint_type=ObjectEndpoint)
@@ -52,14 +53,9 @@ class DailyReport(Report):
               interval='monthly', entry_point='MonthCollection',
               paginate=True)
 class MonthlyReport(Report):
+    @requires_pandas
     def to_frame(self):
         from copy import deepcopy
-
-        import pandas as pd
-        if pd.__version__.startswith('0'):
-            from pandas.io.json import json_normalize
-        else:
-            from pandas import json_normalize
 
         dupe = deepcopy(self)
         frames = dict()
@@ -86,14 +82,8 @@ class MonthlyReport(Report):
               interval='annual', entry_point='AnnualReportBody',
               paginate=True)
 class AnnualReport(Report):
+    @requires_pandas
     def to_frame(self):
-        import pandas as pd
-        
-        if pd.__version__.startswith('0'):
-            from pandas.io.json import json_normalize
-        else:
-            from pandas import json_normalize
-
         res = json_normalize(
             self, 'AnnualReportMonthlyDataRows', meta=['Year', 'SiteId']
         )

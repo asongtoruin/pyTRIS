@@ -1,10 +1,12 @@
+from .utilities import requires_pandas
+
+
 class Model:
     def __init__(self, *args, **kwargs):
         pass
 
 
 class Report(list):
+    @requires_pandas
     def to_frame(self):
-        import pandas as pd
-
         return pd.DataFrame(self)
