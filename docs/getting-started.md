@@ -1,12 +1,13 @@
 ## Creating an API object
 The first step to accessing the data is to create an instance of the `API` 
 object. The only parameter required is `version` - at the time of writing 
-(July 2020), the only `version` of the webTRIS APIs that is available is 1.0.
+(July 2020), the only `version` of the webTRIS APIs that is available is 1.0, 
+and so this is passed through by default
 
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 ```
 
 ## Accessing Endpoints
@@ -18,7 +19,7 @@ endpoints for Sites, for example, we can use:
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 sites = api.sites()
 ```
 
@@ -42,7 +43,7 @@ site we want to find information about:
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 sites = api.sites()
 
 result = sites.get(1)
@@ -70,7 +71,7 @@ you'll need to iterate through them:
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 sites = api.sites()
 
 for site in sites.all():
@@ -116,7 +117,7 @@ Putting this together, an example to get data for one site would be as follows:
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 daily = api.daily_reports()
 
 result = daily.get(
@@ -134,7 +135,7 @@ the method used.
     ```Python
     from pytris import API
 
-    api = API(version='1.0')
+    api = API()
     monthly = api.monthly_reports()
 
     result = monthly.get(
@@ -149,7 +150,7 @@ the method used.
     ```Python
     from pytris import API
 
-    api = API(version='1.0')
+    api = API()
     daily = api.daily_reports()
 
     result = daily.get(
@@ -174,7 +175,7 @@ For `daily_reports` and `annual_reports`, this method directly returns a
 ```Python
 from pytris import API
 
-api = API(version='1.0')
+api = API()
 daily = api.daily_reports()
 
 result = daily.get(
