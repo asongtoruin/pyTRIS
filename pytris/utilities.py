@@ -1,4 +1,8 @@
+from functools import wraps
+
+
 def requires_pandas(func):
+    @wraps(func)
     def inner(*args, **kwargs):
         import pandas as pd
         
