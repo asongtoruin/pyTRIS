@@ -84,6 +84,23 @@ def test_missing_param(latest_api):
             assert key in str(err.value)
 
 
+def test_bad_date(latest_api):
+    for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
+        method = getattr(latest_api, rep)
+
+        for d_type in ('start_date', 'end_date'):   
+            partial_dict = {k: v for k, v in PARAMS_DICT.items() if k != d_type}
+            partial_dict[d_type] = '32012020'
+
+            with pytest.raises(ValueError) as err:
+                method().get(**partial_dict)
+
+            assert (
+                f'Parameter {d_type} must be of format DDMMYYYY' 
+                in str(err.value)
+            )
+
+
 @pytest.mark.vcr()
 def test_no_data(latest_api):
     for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
