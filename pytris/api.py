@@ -61,8 +61,20 @@ class API:
                     version=self.version, path=resource_name, 
                     model=model, request_class=self._request_class, **kwargs
                 )
+
+            doc = (
+                f'Method for accessing endpoints for {model.__name__} resources'
+            )
+
+            if 'parameters' in kwargs.keys():
+                required = ', '.join(
+                    param.name for param in kwargs['parameters'] 
+                    if param.required
+                )
+                doc += f'\n\nRequired parameters for endpoints: {required}'
+                    
             accessor.__name__ = name
-            accessor.__doc__ = 'Endpoint for {}s'.format(model.__name__)
+            accessor.__doc__ = doc
             setattr(cls, name, accessor)
             return model
         return decorator
