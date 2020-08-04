@@ -100,7 +100,7 @@ Each of these methods has the same required parameters:
       e.g. `'8438,8439'`
 * `start_date` should be a date in string format of `DDMMYYYY` - e.g. 
   `'01012020'` for the 1st January 2020
-* `start_date` should be a date, again as a string in the same format
+* `end_date` should be a date, again as a string in the same format
 
 ??? warning
     If any of the required parameters are missing, `pyTRIS` will raise a 
