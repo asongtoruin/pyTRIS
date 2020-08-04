@@ -3,9 +3,7 @@ from .utilities import requires_pandas
 
 class Model:
     """Base class for Models."""
-    def __init__(self, *args, **kwargs):
-        """Constructor for the Model."""
-        pass
+    pass
 
 
 class Report(list):

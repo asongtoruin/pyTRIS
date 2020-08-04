@@ -17,7 +17,7 @@ class DateParameter(Parameter):
             return value.strtime('%d%m%Y')
 
         try:
-            dt = datetime.strptime(value, '%d%m%Y')
+            datetime.strptime(value, '%d%m%Y')
         except ValueError:
             raise ValueError(
                 f'Parameter {self.name} must be of format DDMMYYYY '

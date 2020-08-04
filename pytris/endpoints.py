@@ -37,8 +37,8 @@ class ObjectEndpoint(BaseEndpoint):
             self._objects_from_resp(request.fetch(), self.model, self.path)
         )
     
-    def _objects_from_resp(self, resp: dict, 
-                           model: Union[Type[Model], Type[Report]], 
+    @staticmethod
+    def _objects_from_resp(resp: dict, model: Union[Type[Model], Type[Report]], 
                            key_name: str):
         return (
             model(**{k.lower(): v for k, v in mod_dict.items()})
@@ -77,7 +77,7 @@ class DataEndpoint(BaseEndpoint):
         self._paginate = paginate
         self._parameters = parameters
 
-    def get(self, page_size: Optional[int]=None, **kwargs):
+    def get(self, page_size: Optional[int] = None, **kwargs):
         if not page_size:
             page_size = self.PAGE_SIZE
 

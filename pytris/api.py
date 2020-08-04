@@ -1,6 +1,3 @@
-import json
-from urllib.parse import urljoin 
-from urllib.request import urlopen
 from typing import Type
 import warnings
 
@@ -14,8 +11,8 @@ KNOWN_VERSIONS = ['1.0']
 class API:
     """Main entry point for accessing the webTRIS API.
     """
-    def __init__(self, version: str='1.0', 
-                 request_class: Type[HTTPRequest]=HTTPRequest):
+    def __init__(self, version: str = '1.0',
+                 request_class: Type[HTTPRequest] = HTTPRequest):
         """Constructor for the API object.
 
         Args:

@@ -17,7 +17,7 @@ class HTTPRequest:
     def url(self):
         return urljoin(self.BASE_URL.format(version=self.version), self.path)
 
-    def fetch(self, params: Optional[dict]=None):
+    def fetch(self, params: Optional[dict] = None):
         if params is not None:
             data = urlencode(params)
             url = self.url + f'?{data}'
@@ -26,10 +26,8 @@ class HTTPRequest:
         print(f"Requesting {url}")
         resp = urlopen(url)
 
-        encoding = resp.info().get_content_charset('utf-8')
-
         data = resp.read()
         if data:
-            return json.loads(data)#.decode(encoding))
+            return json.loads(data)
         else:
             raise DataUnavailableError('No data found.')
