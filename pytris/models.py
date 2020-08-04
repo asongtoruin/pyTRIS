@@ -1,6 +1,7 @@
 from .api import API
 from .base_models import Model, Report
 from .endpoints import ObjectEndpoint, SubObjectEndpoint, DataEndpoint
+from .parameters import Parameter, DateParameter
 from .utilities import requires_pandas
 
 
@@ -40,7 +41,11 @@ class SiteType(Model):
 
 @API.register('daily_reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
-              required=['sites', 'start_date', 'end_date'],
+              parameters=[
+                  Parameter('sites', required=True), 
+                  DateParameter('start_date', required=True), 
+                  DateParameter('end_date', required=True),
+              ],
               interval='daily', entry_point='Rows',
               paginate=True)
 class DailyReport(Report):
@@ -49,7 +54,11 @@ class DailyReport(Report):
 
 @API.register('monthly_reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
-              required=['sites', 'start_date', 'end_date'],
+              parameters=[
+                  Parameter('sites', required=True), 
+                  DateParameter('start_date', required=True), 
+                  DateParameter('end_date', required=True),
+              ],
               interval='monthly', entry_point='MonthCollection',
               paginate=True)
 class MonthlyReport(Report):
@@ -78,7 +87,11 @@ class MonthlyReport(Report):
 
 @API.register('annual_reports', resource_name='reports',
               endpoint_type=DataEndpoint, 
-              required=['sites', 'start_date', 'end_date'],
+              parameters=[
+                  Parameter('sites', required=True), 
+                  DateParameter('start_date', required=True), 
+                  DateParameter('end_date', required=True),
+              ],
               interval='annual', entry_point='AnnualReportBody',
               paginate=True)
 class AnnualReport(Report):
@@ -94,7 +107,11 @@ class AnnualReport(Report):
 
 @API.register('daily_quality', resource_name='quality',
               endpoint_type=DataEndpoint, 
-              required=['siteId', 'start_date', 'end_date'],
+              parameters=[
+                  Parameter('siteId', required=True), 
+                  DateParameter('start_date', required=True), 
+                  DateParameter('end_date', required=True),
+              ],
               interval='daily', entry_point='Qualities',
               paginate=False)
 class DailyQuality(Report):
@@ -103,7 +120,11 @@ class DailyQuality(Report):
 
 @API.register('overall_quality', resource_name='quality',
               endpoint_type=DataEndpoint, 
-              required=['sites', 'start_date', 'end_date'],
+              parameters=[
+                  Parameter('sites', required=True), 
+                  DateParameter('start_date', required=True), 
+                  DateParameter('end_date', required=True),
+              ],
               interval='overall', entry_point='data_quality',
               paginate=False)
 class Quality(int):

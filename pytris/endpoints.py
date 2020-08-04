@@ -1,6 +1,7 @@
 from typing import Iterator, Optional, Type, Union
 
 from .base_models import Model, Report
+from .parameters import Parameter
 from .requests import HTTPRequest
 
 
@@ -69,31 +70,41 @@ class DataEndpoint(BaseEndpoint):
     def __init__(self, version: str, path: str, 
                  model: Type[Report], request_class: Type[HTTPRequest], 
                  interval: str, entry_point: str, 
-                 required: Iterator[str], paginate: bool):
+                 parameters: Iterator[Type[Parameter]], paginate: bool):
         super().__init__(version, path, model, request_class)
         self._interval = interval
         self._entry_point = entry_point
         self._paginate = paginate
-        self._required = required
+        self._parameters = parameters
 
     def get(self, page_size: Optional[int]=None, **kwargs):
         if not page_size:
             page_size = self.PAGE_SIZE
 
-        missing_params = [k for k in self._required if k not in kwargs.keys()]
+        # Check if we're missing any of the required parameters
+        missing_params = [
+            k.name for k in self._parameters 
+            if k.required and k.name not in kwargs.keys()
+        ]
+
         if missing_params:
             raise ValueError(
                 f'Missing required parameters: {", ".join(missing_params)}'
             )
         
+        param_dict = dict()
+
         if self._paginate:
-            kwargs['page'] = 1
-            kwargs['page_size'] = page_size
+            param_dict['page'] = 1
+            param_dict['page_size'] = page_size
+        
+        for param in self._parameters:
+            param_dict[param.name] = param.to_value(kwargs[param.name])
 
         endpoint_path = '/'.join([self.path, self._interval])
 
         request = self.request_class(self.version, endpoint_path)
-        resp = request.fetch(params=kwargs)
+        resp = request.fetch(params=param_dict)
 
         results = resp[self._entry_point]
 
@@ -101,8 +112,8 @@ class DataEndpoint(BaseEndpoint):
         if self._paginate:
             next_page = self._next_page_link(resp)
             while next_page is not None:
-                kwargs['page'] += 1
-                resp = request.fetch(params=kwargs)
+                param_dict['page'] += 1
+                resp = request.fetch(params=param_dict)
 
                 results += resp[self._entry_point]
                 next_page = self._next_page_link(resp)
