@@ -14,7 +14,7 @@ class Parameter:
 class DateParameter(Parameter):
     def to_value(self, value: Union[str, datetime]):
         if isinstance(value, datetime):
-            return value.strtime('%d%m%Y')
+            return value.strftime('%d%m%Y')
 
         try:
             datetime.strptime(value, '%d%m%Y')
