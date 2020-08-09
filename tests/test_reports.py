@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pandas import DataFrame
 import pytest
 import vcr
@@ -82,6 +84,40 @@ def test_missing_param(latest_api):
                 method().get(**partial_dict)
 
             assert key in str(err.value)
+
+
+@vcr.use_cassette('tests/cassettes/test_get_reports.yaml')
+def test_datetime_start(latest_api):
+    for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
+        method = getattr(latest_api, rep)
+
+        partial_dict = {k: v for k, v in PARAMS_DICT.items()}
+
+        partial_dict['start_date'] = datetime.strptime(
+            PARAMS_DICT['start_date'], '%d%m%Y'
+        )
+
+        res = method().get(**partial_dict)
+
+        assert isinstance(res, Report)
+        assert isinstance(res, model)
+
+
+@vcr.use_cassette('tests/cassettes/test_get_reports.yaml')
+def test_datetime_end(latest_api):
+    for rep, model in zip(REPORT_CLASSES, MODEL_CLASSES):
+        method = getattr(latest_api, rep)
+
+        partial_dict = {k: v for k, v in PARAMS_DICT.items()}
+
+        partial_dict['end_date'] = datetime.strptime(
+            PARAMS_DICT['end_date'], '%d%m%Y'
+        )
+
+        res = method().get(**partial_dict)
+
+        assert isinstance(res, Report)
+        assert isinstance(res, model)
 
 
 def test_bad_date(latest_api):
