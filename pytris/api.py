@@ -1,3 +1,4 @@
+import logging
 from typing import Type
 import warnings
 
@@ -6,6 +7,7 @@ from .errors import UnknownVersionWarning
 from .requests import HTTPRequest
 
 
+logger = logging.getLogger(__name__)
 KNOWN_VERSIONS = ['1.0']
 
 class API:
@@ -52,8 +54,11 @@ class API:
                 Any additional keyword arguments required by the Endpoint 
                 chosen.
         """
+
+
         def decorator(model):
             def accessor(self):
+                logger.debug(f'Registering {name} under {resource_name}')
                 return endpoint_type(
                     version=self.version, path=resource_name, 
                     model=model, request_class=self._request_class, **kwargs

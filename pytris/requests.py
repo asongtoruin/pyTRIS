@@ -1,10 +1,13 @@
 import json
+import logging
 from typing import Optional
 from urllib.parse import urljoin, urlencode
 from urllib.request import urlopen
 
 from .errors import DataUnavailableError
 
+
+logger = logging.getLogger(__name__)
 
 class HTTPRequest:
     BASE_URL = 'http://webtris.highwaysengland.co.uk/api/v{version}/'
@@ -23,7 +26,7 @@ class HTTPRequest:
             url = self.url + f'?{data}'
         else:
             url = self.url
-        print(f"Requesting {url}")
+        logger.info(f"Requesting {url}")
         resp = urlopen(url)
 
         data = resp.read()
